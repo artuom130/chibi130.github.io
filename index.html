@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Task 2</title>
+  <link rel="stylesheet" href="bundle.css">
+  <link rel="stylesheet" href="ps/perfect-scrollbar.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="overlay"></div>
+    <header class="head">
+      <a href="#">
+        <img src="./images/YaHome.svg" alt="Яндекс Дом" class="logo">
+      </a>
+      <button class="nav-toggle">
+        <span class="bar-top"></span>
+        <span class="bar-mid"></span>
+        <span class="bar-bot"></span>
+      </button>
+      <nav class="nav">
+        <a href="#" class="nav__link">Сводка</a>
+        <a href="#devices" class="nav__link">Устройства</a>
+        <a href="#scenarios" class="nav__link">Сценарии</a>
+      </nav>
+    </header>
+    <div class="content-main">
+      <h3 class="content-head">Главное</h3>
+      <div class="content-main__container">
+        <div class="content-main__infobox">
+          <h2 class="content-main__welcome">Привет, Геннадий!</h2>
+          <div class="content-main__info">Двери и окна закрыты, сигнализация включена.</div>
+          <div class="content-main__forecasts">
+            <div class="forecast">
+              <div class="forecast__place">Дома</div>
+              <div class="forecast__temperature">
+                +23
+              </div>
+            </div>
+            <div class="forecast">
+              <div class="forecast__place">За окном</div>
+              <div class="forecast__temperature">
+                +19
+                <img class="forecast__img" src="images/cloud-drizzle.svg" alt="Облачно. Дождь.">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-cards content-main__cards">
+          <div class="card card--large" data-modal-type="roundTemperature">
+            <img src="images/icon_temperature.svg" alt="Иконка градусника" class="card__img">
+            <div class="card__title">Philips Cooler</div>
+            <div class="card__subtitle">Начнет охлаждать в 16:30</div>
+          </div>
+          <div class="card card--large" data-modal-type="light">
+            <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+            <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+            <div class="card__subtitle">Включится в 17:00</div>
+          </div>
+          <div class="card card--large" data-modal-type="light">
+            <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+            <div class="card__title">D-Link Omna 180 Cam</div>
+            <div class="card__subtitle">Начнётся в 18:00</div>
+          </div>
+          <div class="card card--large" data-modal-type="temperature">
+            <img src="images/icon_temperature.svg" alt="Иконка градусника" class="card__img">
+            <div class="card__title">Philips Cooler</div>
+            <div class="card__subtitle">Начнет охлаждать в 16:30</div>
+          </div>
+          <div class="card card--large" data-modal-type="light">
+            <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+            <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+            <div class="card__subtitle">Включится в 17:00</div>
+          </div>
+          <div class="card card--large" data-modal-type="light">
+            <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+            <div class="card__title">D-Link Omna 180 Cam</div>
+            <div class="card__subtitle">Начнётся в 18:00</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="content-scenarios" id="scenarios">
+      <div class="content-head-container">
+        <h3 class="content-head">Избранные сценарии</h3>
+        <div class="content-head-controls">
+          <button class="content-head-control btn--prev" disabled></button>
+          <button class="content-head-control btn--next" disabled></button>
+        </div>
+      </div>
+      <div class="content-cards content-scenarios__cards">
+        <div class="card" data-modal-type="light">
+          <img src="images/icon_sun_2.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Выключить весь свет в доме и во дворе</div>
+        </div>
+        <div class="card" data-modal-type="roundTemperature">
+          <img src="images/icon_scheduled.svg" alt="Иконка часов" class="card__img">
+          <div class="card__title">Я ухожу</div>
+        </div>
+        <div class="card" data-modal-type="light"> 
+          <img src="images/icon_sun_2.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Включить свет в коридоре</div>
+        </div>
+        <div class="card" data-modal-type="temperature">
+          <img src="images/icon_temperature_2.svg" alt="Иконка градусника" class="card__img">
+          <div class="card__title">Набрать горячую ванну</div>
+          <div class="card__subtitle">Начнётся в 18:00</div>
+        </div>
+        <div class="card" data-modal-type="temperature">
+          <img src="images/icon_temperature_2.svg" alt="Иконка градусника" class="card__img">
+          <div class="card__title">Сделать пол тёплым во всей квартире</div>
+        </div>
+
+      </div>
+    </div>
+    <div class="content-devices" id="devices">
+      <div class="content-head-container">
+        <h3 class="content-head">Избранные устройства</h3>
+        <select name="devices" id="devices" class="menu-devices-mobile">
+          <option value="all">Все</option>
+          <option value="kitchen">Кухня</option>
+          <option value="hall">Зал</option>
+          <option value="lightbulbs">Лампочки</option>
+          <option value="cameras">Камеры</option>
+        </select>
+        <div class="menu-radioOptions menu-radioOptions--devices">
+          <input class="menu-radioOptions__radio" type="radio" name="devices" value="all" id="all" checked>
+          <label class="menu-radioOptions__option" for="all">Все</label>
+
+          <input class="menu-radioOptions__radio" type="radio" name="devices" value="kitchen" id="kitchen">
+          <label class="menu-radioOptions__option" for="kitchen">Кухня</label>
+
+          <input class="menu-radioOptions__radio" type="radio" name="devices" value="hall" id="hall">
+          <label class="menu-radioOptions__option" for="hall">Зал</label>
+
+          <input class="menu-radioOptions__radio" type="radio" name="devices" value="lightbulbs" id="lightbulbs">
+          <label class="menu-radioOptions__option" for="lightbulbs">Лампочки</label>
+
+          <input class="menu-radioOptions__radio" type="radio" name="devices" value="cameras" id="cameras">
+          <label class="menu-radioOptions__option" for="cameras">Камеры</label>
+        </div>
+        <div class="content-head-controls">
+          <button class="content-head-control btn--prev" disabled="true"></button>
+          <button class="content-head-control btn--next"></button>
+        </div>
+      </div>
+      <div class="content-cards content-devices__cards">
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun_2.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+          <div class="card__subtitle">Включено</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">D-Link Omna 180 Cam</div>
+          <div class="card__subtitle">Включится в 17:00</div>
+        </div>
+        <div class="card card--large" data-modal-type="roundTemperature">
+          <img src="images/icon_temperature.svg" alt="Иконка градусника" class="card__img">
+          <div class="card__title">Elgato Eve Degree Connected</div>
+          <div class="card__subtitle">Выключено до 17:00</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">LIFX Mini Day & Dusk A60 E27</div>
+          <div class="card__subtitle">Включится в 17:00</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun_2.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Mi Air Purifier 2S</div>
+          <div class="card__subtitle">Включено</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Mi Air Purifier 2S</div>
+          <div class="card__subtitle">Выключено</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+          <div class="card__subtitle">Включится в 17:00</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+          <div class="card__subtitle">Включится в 17:00</div>
+        </div>
+        <div class="card card--large" data-modal-type="light">
+          <img src="images/icon_sun.svg" alt="Иконка солнца" class="card__img">
+          <div class="card__title">Xiaomi Yeelight LED Smart Bulb</div>
+          <div class="card__subtitle">Включится в 17:00</div>
+        </div>
+      </div>
+    </div>
+    <footer class="footer">
+      <div class="footer-pages">
+        <a href="#" class="footer-pages__link">Помощь</a>
+        <a href="#" class="footer-pages__link">Обратная связь</a>
+        <a href="#" class="footer-pages__link">Разработчикам</a>
+        <a href="#" class="footer-pages__link">Условия использования</a>
+      </div>
+      <div class="copyright">&copy;&nbsp;2001&ndash;2017&nbsp;ООО&nbsp;&laquo;Яндекс&raquo;</div>
+    </footer>
+  </div>
+  <div class="modal modal--temperature" role="dialog" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-head-container">
+        <div class="modal-title-container">
+          <h3 class="modal__title">Elgato Eve Degree Connected</h3>
+          <div class="modal__status">Включено</div>
+        </div>
+        <div class="modal-info">
+          <div class="modal-info__temperature">+19</div>
+          <img class="modal-info__img" src="images/icon_temperature_2.svg" alt="Иконка градусника">
+        </div>
+      </div>
+      <div class="modal-control-container">
+        <div class="menu-radioOptions">
+          <input class="menu-radioOptions__radio" type="radio" name="temp_modes" value="manually" id="manually" checked>
+          <label class="menu-radioOptions__option" for="manually">Вручную</label>
+          <input class="menu-radioOptions__radio" type="radio" name="temp_modes" value="cold" id="cold">
+          <label class="menu-radioOptions__option" for="cold">Холодно</label>
+          <input class="menu-radioOptions__radio" type="radio" name="temp_modes" value="heat" id="heat">
+          <label class="menu-radioOptions__option" for="heat">Тепло</label>
+          <input class="menu-radioOptions__radio" type="radio" name="temp_modes" value="hot" id="hot">
+          <label class="menu-radioOptions__option" for="hot">Жарко</label>
+        </div>
+        <div class="slider-mob-wrapper">
+          <div class="slider-wrapper slider-wrapper--temperature">
+            <input type="range" min="-10" max="30" value="19" class="slider" id="rangeTemperature">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-window-controls">
+      <div class="modal-btn modal-btn--apply">Применить</div>
+      <div class="modal-btn modal-btn--close">Закрыть</div>
+    </div>
+  </div>
+  <div class="modal modal--light" role="dialog" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-head-container">
+        <div class="modal-title-container">
+          <h3 class="modal__title">Xiaomi Yeelight LED Smart Bulb</h3>
+          <div class="modal__status">Включится в 17:00</div>
+        </div>
+        <div class="modal-info">
+          <img class="modal-info__img" src="images/icon_sun.svg" alt="Иконка солнца">
+        </div>
+      </div>
+      <div class="modal-control-container">
+        <div class="menu-radioOptions">
+          <input class="menu-radioOptions__radio" type="radio" name="light_modes" value="l-manually" id="l-manually" checked>
+          <label class="menu-radioOptions__option" for="l-manually">Вручную</label>
+          <input class="menu-radioOptions__radio" type="radio" name="light_modes" value="daylight" id="daylight">
+          <label class="menu-radioOptions__option" for="daylight">Дневной свет</label>
+          <input class="menu-radioOptions__radio" type="radio" name="light_modes" value="eveninglight" id="eveninglight">
+          <label class="menu-radioOptions__option" for="eveninglight">Вечерний свет</label>
+          <input class="menu-radioOptions__radio" type="radio" name="light_modes" value="dawn" id="dawn">
+          <label class="menu-radioOptions__option" for="dawn">Рассвет</label>
+        </div>
+        <div class="slider-mob-wrapper">
+          <div class="slider-wrapper slider-wrapper--light">
+            <input type="range" min="1" max="100" value="50" class="slider" id="rangeLight">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal-window-controls">
+      <div class="modal-btn modal-btn--apply">Применить</div>
+      <div class="modal-btn modal-btn--close">Закрыть</div>
+    </div>
+  </div>
+  <div class="modal modal--roundTemperature" role="dialog" aria-hidden="true">
+    <div class="modal-window">
+      <div class="modal-head-container">
+        <div class="modal-title-container">
+          <h3 class="modal__title">Xiaomi Warm Floor</h3>
+          <div class="modal__status">Включено</div>
+        </div>
+        <div class="modal-info">
+          <div class="modal-info__temperature">+23</div>
+          <img class="modal-info__img" src="images/icon_temperature_2.svg" alt="Иконка градусника">
+        </div>
+      </div>
+      <div class="modal-control-container">
+        <div class="slider-wrapper--roundTemperature">
+          <svg width="400px" height="400px" viewBox="-175 -175 350 350" class="roundSlider">
+            <style>
+              .heavy {
+                font: bold 110px Arial;
+              }
+            </style>
+            <defs>
+              <filter id="dropshadow" x="-40%" y="-40%" width="180%" height="180%">
+                <feOffset result="offOut" in="SourceGraphic" dx="0" dy="2" />
+                <feColorMatrix result="matrixOut" in="offOut" type="matrix" values="0.2 0 0 0 0 0 0.2 0 0 0 0 0 0.2 0 0 0 0 0 1 0" />
+                <feGaussianBlur result="blurOut" in="matrixOut" stdDeviation="5" />
+                <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+              </filter>
+            </defs>
+            <path fill="none" stroke="#000" stroke-width="50px" stroke-linecap="buff" stroke-dasharray="2, 6" 
+                  d="M 150,0
+                      A 150, 150 0 0,1 106,106
+                      " />
+            <path fill="none" stroke="#F5A623" stroke-width="50px" stroke-linecap="buff" stroke-dasharray="2, 6" stroke-dashoffset="3"
+                  d="M -106, 106
+                      A 150, 150 0 1,1 150,0
+                      " />
+            <circle cx="0" cy="0" r="140" fill="#FEFEFE" filter="url(#dropshadow)"></circle>
+            <text x="-95" y="35" fill="#333" class="heavy">+23</text>
+            <path fill="#333" stroke="#333" stroke-width="3" stroke-linejoin="round" 
+                  d="M 138 -2
+                      l -10 -10
+                      l 0 20
+                      Z
+                      " />
+          </svg>
+        </div>
+      </div>
+    </div>
+    <div class="modal-window-controls">
+      <div class="modal-btn modal-btn--apply">Применить</div>
+      <div class="modal-btn modal-btn--close">Закрыть</div>
+    </div>
+  </div>
+  <!-- <script src= "bundle.js"></script> -->
+  <script src="ps/perfect-scrollbar.js"></script>
+  <script src="modal.js"></script>
+  <script src="script.js"></script>
+</body>
+
+</html>
