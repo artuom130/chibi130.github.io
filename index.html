@@ -7,7 +7,6 @@
   <title>Task 2</title>
   <link rel="stylesheet" href="bundle.css">
   <link rel="stylesheet" href="ps/perfect-scrollbar.css">
-  <meta name="apple-mobile-web-app-capable" content="yes" />
 </head>
 
 <body>
@@ -24,8 +23,8 @@
       </button>
       <nav class="nav">
         <a href="#" class="nav__link">Сводка</a>
-        <a href="#devices" class="nav__link">Устройства</a>
-        <a href="#scenarios" class="nav__link">Сценарии</a>
+        <a href="#" class="nav__link">Устройства</a>
+        <a href="#" class="nav__link">Сценарии</a>
       </nav>
     </header>
     <div class="content-main">
@@ -52,7 +51,7 @@
         </div>
 
         <div class="content-cards content-main__cards">
-          <div class="card card--large" data-modal-type="roundTemperature">
+          <div class="card card--large" data-modal-type="temperature">
             <img src="images/icon_temperature.svg" alt="Иконка градусника" class="card__img">
             <div class="card__title">Philips Cooler</div>
             <div class="card__subtitle">Начнет охлаждать в 16:30</div>
@@ -85,7 +84,7 @@
         </div>
       </div>
     </div>
-    <div class="content-scenarios" id="scenarios">
+    <div class="content-scenarios">
       <div class="content-head-container">
         <h3 class="content-head">Избранные сценарии</h3>
         <div class="content-head-controls">
@@ -118,7 +117,7 @@
 
       </div>
     </div>
-    <div class="content-devices" id="devices">
+    <div class="content-devices">
       <div class="content-head-container">
         <h3 class="content-head">Избранные устройства</h3>
         <select name="devices" id="devices" class="menu-devices-mobile">
@@ -329,8 +328,10 @@
       <div class="modal-btn modal-btn--close">Закрыть</div>
     </div>
   </div>
-  <!-- <script src= "bundle.js"></script> -->
+
+
   <script src="ps/perfect-scrollbar.js"></script>
+  <script src="screenfull.min.js"></script>
   <script src="modal.js"></script>
   <script src="script.js"></script>
 </body>

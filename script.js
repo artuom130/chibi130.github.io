@@ -1,13 +1,67 @@
 let mainPS, devicesPS, scenariosPS;
-
 const devicesHeadControls = document.querySelector('.content-devices .content-head-controls');
 const devicesCards = document.querySelector('.content-devices__cards');
+const mainCards = document.querySelector('.content-main__cards');
 document.addEventListener("DOMContentLoaded", function () {
   setScrolls();
-  //попытка убрать адресную строку
-  if (navigator.userAgent.match(/Android/i) != null) {
-    document.documentElement.style.height = window.outerHeight + 'px';
-    setTimeout(window.scrollTo(0, 1), 0);
+  if(mainCards) {
+    mainCards.addEventListener('ps-scroll-down', function() {
+      if(mainCards.scrollTop > 10 &&  mainCards.classList.contains('content-main__cards--in')) {
+        console.log('scrolldonw');
+        mainCards.classList.remove('content-main__cards--in');
+        mainCards.classList.add('content-main__cards--out');
+      }
+    });
+    mainCards.addEventListener('ps-y-reach-start', function() {
+      console.log('reach-start');
+      mainCards.classList.remove('content-main__cards--out');
+      mainCards.classList.add('content-main__cards--in');
+    });
+  }
+  if(devicesPS) {
+    devicesCards.addEventListener('ps-x-reach-end', function() {
+      devicesHeadControls.lastElementChild.setAttribute('disabled', true);
+    })
+    devicesCards.addEventListener('ps-x-reach-start', function() {
+      devicesHeadControls.firstElementChild.setAttribute('disabled', true);
+    })
+    
+    const smoothScroll = function(offset) {
+      if(Math.abs(offset) < 20) {
+        setTimeout(function() {
+          window.requestAnimationFrame(function() {
+            devicesCards.scrollLeft += offset;
+          });
+        }, 10);
+        return;
+      }
+      if(offset > 0) {
+        setTimeout(function() {
+          window.requestAnimationFrame(function() {
+            devicesCards.scrollLeft += 20;
+          });
+          smoothScroll(offset - 20);
+        }, 10);
+      } else {
+        setTimeout(function() {
+          window.requestAnimationFrame(function() {
+            devicesCards.scrollLeft -= 20;
+          });
+          smoothScroll(offset + 20);
+        }, 10);
+      }
+    } 
+
+    devicesHeadControls.addEventListener('click', function(e) {
+      if(e.target.classList.contains('btn--next')) {
+        devicesHeadControls.firstElementChild.removeAttribute('disabled');
+        smoothScroll(215);
+      }
+      if(e.target.classList.contains('btn--prev')) {
+        devicesHeadControls.lastElementChild.removeAttribute('disabled');
+        smoothScroll(-215);
+      }
+    });
   }
 });
 
@@ -23,52 +77,19 @@ function setScrolls() {
     scenariosPS.destroy();
     scenariosPS = null;
   }
-  if (window.innerWidth > 770) {
+  if (window.matchMedia("(min-width: 900px)").matches) {
     mainPS = new PerfectScrollbar('.content-main__cards', {
       suppressScrollX: true,
     });
     devicesPS = new PerfectScrollbar(devicesCards);
   }
-  if (window.innerWidth > 600 && window.innerWidth < 1150) {
+  if (window.matchMedia("(min-width: 900px) and (max-width: 1150px)").matches) {
     scenariosPS = new PerfectScrollbar('.content-scenarios__cards', {
       suppressScrollX: true,
     });
   }
-  if(devicesPS) {
-    devicesCards.addEventListener('ps-x-reach-end', function() {
-      devicesHeadControls.lastElementChild.setAttribute('disabled', true);
-    })
-    devicesCards.addEventListener('ps-x-reach-start', function() {
-      devicesHeadControls.firstElementChild.setAttribute('disabled', true);
-    })
-    const stepLeft = (i) => {
-      if(i < 10) {
-        setTimeout(function() {
-          window.requestAnimationFrame(function() {
-            devicesCards.scrollLeft += 10;
-          });
-        }, 20);
-      }
-    } 
-    devicesHeadControls.addEventListener('click', function(e) {
-      if(e.target.classList.contains('btn--next')) {
-        devicesHeadControls.firstElementChild.removeAttribute('disabled');
-        devicesCards.scrollLeft += 100;
-        let i = 0;
-        for(let i = 0; i < 10; i++) {
-          setTimeout(function() {
-            window.requestAnimationFrame(function() {
-              devicesCards.scrollLeft += 10;
-            });
-          }, i*10);
-        }
-      }
-      if(e.target.classList.contains('btn--prev')) {
-        devicesHeadControls.lastElementChild.removeAttribute('disabled');
-        devicesCards.scrollLeft -= 100;
-      }
-    });
-  }
+  //обработчики кнопок
+  
 }
 
 
@@ -81,7 +102,7 @@ function setScrolls() {
   rangeTemperature.addEventListener('change', function () {
     infoTemperature.innerHTML = this.value > 0 ? '+' + this.value : this.value;
   });
-
+  console.log(screenfull);
   document.addEventListener('click', function (e) {
     //мобильное меню
     if (e.target.closest('.nav-toggle')) {
@@ -89,6 +110,9 @@ function setScrolls() {
     }
     //открытие модалки
     if (e.target.closest('.card')) {
+      if (screenfull.enabled && window.matchMedia("(max-width: 900px)").matches) {
+        screenfull.request();
+      }
       const curCard = e.target.closest('.card');
       const modalType = curCard.getAttribute('data-modal-type');
       if (modalType) {
